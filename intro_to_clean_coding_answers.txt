@@ -105,6 +105,18 @@ FUNCTION checkoutBook(book, guest)
      PRINT "Unable to check out book."
  END IF
 END FUNCTION
+
+Refactered:
+FUNCTION checkoutBook(book, guest)
+  IF guest.accountActive AND not guest.hasOverDueBooks AND guest.outstandingFees = 0
+    THEN APPEND book to guest.books
+    SET book.status to "Checked out"
+    PRINT "Your books have been issued."
+  ELSE
+    PRINT "Unable to check out book."
+  END IF
+END FUNCTION
+
 c. The following class is a code snippet that should support the transactions a customer can perform at an ATM.
 
 CLASS BankAccount
@@ -134,12 +146,38 @@ CLASS BankAccount
          CALL offerCheckingAccount
      END
  END FUNCTION
-
- ....
- ....
- ....
-
 END
+
+Refactered:
+CLASS BankAccount
+
+FUNCTION displayBalance(customer)
+balance = customer.balance
+   PRINT balance
+END FUNCTION
+
+FUNCTION deposit(customer,amount)
+balance = customer.balance
+   ADD amount to balance
+   SET balance
+END FUNCTION
+
+FUNCTION withdraw(customer, amount)
+balance = customer.balance
+    IF balance is greater than amount THEN
+      SUBTRACT amount from balance
+      SET balance
+    END IF
+END FUNCTION
+
+FUNCTION bankSTATUS(customer)
+  IF (not customer.hasCreditCard) THEN
+    CALL offerCheckingAccount
+  ESLE IF (not customer.hasCheckingAccount)
+    CALL offerCheckingAccount
+  ELSE PRINT "You currently have a credit card and checking account"
+  END IF
+END FUNCTION
 Programming Questions
 You may do the following problems in any language of your choice. Use the clean code principles taught in this section while writing the code.
 
