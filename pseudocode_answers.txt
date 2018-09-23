@@ -34,18 +34,24 @@ END FOR
 
 3. Create a function that searches for a specific entry in a phonebook.
 
-SEARCH names for person
-  START FUNCTION filter on names
-    Check each name in phonebook
-    Keep name that equals person
-  END FUNCTION
-END SEARCH
+FUNCTION nameSearch(arr, name)
+ SEARCH each name in the array
+  IF name = array item
+    PRINT "Found (name)"
+  ELSE Print "Could not find (name)"
+  END IF
+END FUNCTION
 
 4. Using the pseudocode you wrote for the previous question, implement it in any computer language of your choice.
 
-var names = ["Lucy Null", "Tasha Fierce", "Miss Queen Bee"];
-console.log(names.filter(name => name === "Tasha Fierce"));
-=======
+function nameSearch(arr, name) {
+  for(i = 0; i < arr.length; i++) {
+    if(name === arr[i]) {
+        return "Found: " + name;
+    }
+  } return "Could not find: " + name;
+}
+
 Short Answer
 
 1. Why do programmers use pseudocode?
