@@ -1,0 +1,115 @@
+Give written answers for each question and put them in linked-lists-answers.txt:
+
+What are some pros and cons of using linked lists instead of arrays?
+
+pros- never contains empty placeholders, each node is independent in memory, node lists can easily grow to large sizes
+cons- inefficient to access an element as you have to search every element from the beginning until you find the element you were searching for.
+
+Come up with a real world example of a linked list.
+
+There are 21 participants in a game called, "guess who's fact". One out of the 20 other participants has a fact (random fact). The person with the fact told their previous neighbor the fact and then that person repeated the fact to their neighbor all the way until the front of the line. You must go to each participant and ask if they have the random fact. If they do, the game stops. If they don't, they point you to the person who told them the fact, then you must go to that person and ask and so on until you find the person.
+
+Programming Questions
+You may program the following questions in any language of your choice (JavaScript, Ruby, etc.).
+
+Before beginning to code, write out a plan explaining how to solve the question.
+
+The linked list push function should take a value, create a node, and add it to the end of a list. Below is pseudocode for a push function for a singly linked list. However, there is something wrong with it. Submit both an explanation of the bug and a functional implementation of the method.
+
+FUNCTION push(element)
+CREATE node
+SET node.value TO element
+SET node.next TO null
+
+IF the head node does not exist
+ THEN SET head to node
+ELSE
+ SET current to head
+ SET current.next to node //Replace this line with....
+                          //WILE current.next
+                          //current = current.next
+                          //current.next = node;
+END IF
+END FUNCTION
+
+Functional implementation:
+class LinkedList {
+  constructor() {
+    this.head = null;
+  }
+
+ insertNodeAtTail(val) {
+   var node = {
+     data: val,
+     next: null
+   };
+
+   if(!this.head) {
+     this.head = node;
+   } else {
+     var n1 = this.head;
+     while(n1.next) {
+       n1 = n1.next;
+     }
+     n1.next = node;
+   }
+  };
+}
+
+Given an unsorted singly linked list, remove all duplicates from the linked list.
+Example
+Input: a -> c -> d -> d -> a
+Output: a -> c -> d
+//continuation from LinkedList class, this method would be inside LinkedList class
+  removeDuplicates() {
+    var headNode = this.head.next;
+    if(!this.head || !headNode) {
+      return `No duplicates were found. Empty or a single element Linked List.`;
+      return;
+    }
+
+    var n1;
+    var n2;
+    var nodes = {};
+
+    n1 = this.head;
+    n2 = n1.next;
+    nodes[n1.data] = true;
+
+    while (n2) {
+      var data = n2.data;
+      if (nodes[data]) {
+          n1.next = n2.next;
+      } else {
+          nodes[data] = true;
+          n1 = n2;
+      }
+      n2 = n2.next;
+    }
+  };
+
+  //convert the node list into an array
+  linkedListToArray() {
+    if(this.head === null)  {
+      return "There are no elements if this nodelist";
+  }
+    var currentNode = this.head;
+    var results = [];
+    while(currentNode !== null) {
+      results.push(currentNode.data);
+      currentNode = currentNode.next;
+  }
+  return results;
+  };
+
+// outside of LinkedList class
+//create a linked list with 6 elements
+var newNode = new LinkedList();
+var testData = [5,6,7,5,5,8];
+testData.forEach(el => newNode.insertNodeAtTail(el));
+newNode.removeDuplicates();
+
+Given an unsorted singly linked list, reverse it.
+Example
+Input: a -> b -> c -> d
+Output: d -> c -> b -> a
