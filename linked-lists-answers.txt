@@ -137,8 +137,41 @@ Example
 Input: a -> b -> c -> d
 Output: d -> c -> b -> a
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 FUNCTION reverseNode(node)
   WHILE no
 =======
+>>>>>>> linked-lists
+=======
+
+//method added to LinkedList class
+reverseLinkedList() {
+  // Empty or a single element Linked List
+  if (!this.head || !this.head.next) {
+    console.log('No duplicates were found. Empty or a single element Linked List.');
+    return;
+  }
+
+  var p1 = null;
+  var p2 = this.head;
+  var p3;
+
+  while (p2) {
+    p3 = p2.next;
+    p2.next = p1;
+    p1 = p2;
+    p2 = p3;
+  }
+
+  this.head = p1;
+}
+
+var foo = new LinkedList();
+var testData = ['a', 'b', 'c', 'd'];
+
+testData.forEach(val => foo.insertNodeAtTail(val));
+console.log(foo.linkedListToArray());
+foo.reverseLinkedList();
+console.log(foo.linkedListToArray());
 >>>>>>> linked-lists
