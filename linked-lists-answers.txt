@@ -7,9 +7,6 @@ cons- inefficient to access an element as you have to search every element from 
 
 Come up with a real world example of a linked list.
 
-<<<<<<< HEAD
-You are at an old library looking for a book about JavaScript, you had previously seen online that it was available. You find a large shelf of books for programming languages. The books are lined up next to each other and out of order. You scan each book and 40 minutes later, you find the book you were looking for.
-=======
 There are 21 participants in a game called, "guess who's fact". One out of the 20 other participants has a fact (random fact). The person with the fact told their previous neighbor the fact and then that person repeated the fact to their neighbor all the way until the front of the line. You must go to each participant and ask if they have the random fact. If they do, the game stops. If they don't, they point you to the person who told them the fact, then you must go to that person and ask and so on until you find the person.
 >>>>>>> linked-lists
 
@@ -26,32 +23,14 @@ SET node.value TO element
 SET node.next TO null
 
 IF the head node does not exist
- THEN SET head to node
+ THEN SET head to node //push head node and set head to node
 ELSE
  SET current to head
-<<<<<<< HEAD
- SET current.next to node
-=======
- SET current.next to node //Replace this line with....
-                          //WILE current.next
-                          //current = current.next
-                          //current.next = node;
->>>>>>> linked-lists
+ SET current.next to node //set to null
 END IF
 END FUNCTION
 
 Functional implementation:
-<<<<<<< HEAD
-class NodeList {
-  constructor(element) {
-    this.head = null;
-    this.length = 0;
-    this.push(element); //bind the method
-  }
-  push(element) {
-    const newNode = { element }
-  }
-=======
 class LinkedList {
   constructor() {
     this.head = null;
@@ -73,7 +52,6 @@ class LinkedList {
      n1.next = node;
    }
   };
->>>>>>> linked-lists
 }
 
 Given an unsorted singly linked list, remove all duplicates from the linked list.
@@ -124,26 +102,17 @@ Output: a -> c -> d
   return results;
   };
 
-// outside of LinkedList class
+// using LinkedLists class from above
 //create a linked list with 6 elements
 var newNode = new LinkedList();
 var testData = [5,6,7,5,5,8];
 testData.forEach(el => newNode.insertNodeAtTail(el));
 newNode.removeDuplicates();
->>>>>>> linked-lists
 
 Given an unsorted singly linked list, reverse it.
 Example
 Input: a -> b -> c -> d
 Output: d -> c -> b -> a
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-FUNCTION reverseNode(node)
-  WHILE no
-=======
->>>>>>> linked-lists
-=======
 
 //method added to LinkedList class
 reverseLinkedList() {
@@ -153,18 +122,18 @@ reverseLinkedList() {
     return;
   }
 
-  var p1 = null;
-  var p2 = this.head;
-  var p3;
+  var n1 = null;
+  var n2 = this.head;
+  var n3;
 
-  while (p2) {
-    p3 = p2.next;
-    p2.next = p1;
-    p1 = p2;
-    p2 = p3;
+  while (n2) {
+    n3 = n2.next;
+    n2.next = n1;
+    n1 = n2;
+    n2 = n3;
   }
 
-  this.head = p1;
+  this.head = n1;
 }
 
 var foo = new LinkedList();
@@ -174,4 +143,3 @@ testData.forEach(val => foo.insertNodeAtTail(val));
 console.log(foo.linkedListToArray());
 foo.reverseLinkedList();
 console.log(foo.linkedListToArray());
->>>>>>> linked-lists
