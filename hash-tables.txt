@@ -34,6 +34,119 @@ The primary and secondary phone numbers for a contact.
 
 6. Build a system that allows a sales associate to enter a customer's name, address, and phone number into the system and look up customers using their phone numbers. Store this information in a hash table.
 
+```
+//Hash Tables
+
+var hash = function(str, max) {
+  var hash = 0;
+  for(var i = 0; i < str.length; i++) {
+    hash += str.charCodeAt(i)
+  }
+  console.log(hash);
+  // max represents the # of "buckets" or storage containers.
+  return hash % max;
+};
+
+let HashTable = function() {
+    let storage = [];
+    //# of buckets in the storage array
+    const storageLimit = 6;
+
+  this.printStorage = function() {
+    return storage
+  }
+
+  this.addKeyValue = function(key, value) {
+    //implement hash funtion to find an index
+    var index = hash(key, storageLimit)
+    //if there is nothing in the storage array
+    if(storage[index] === undefined || NaN) {
+      storage[index] = [[key, value]];
+    }
+    else {
+      var inserted = false;
+      for(i = 0; i < storage[index].length; i++) {
+        //if a bucket with the matching key is found, set the value at the following index to form a [key,value] pair
+        if (storage[index][i][0] === key) {
+          storage[index][i][1] = value;
+          inserted = true;
+        }
+       }
+      if (inserted === false) {
+          storage[index].push([key, value]);
+      }
+    }
+  };
+
+  this.removeValue = function(key) {
+   var index = hash(key, storageLimit);
+    if(storage[index].length === 1 && storage[index][0][0] === key) {
+      //delete operator - removes a property from an object
+      delete storage[index];
+    }
+    else {
+      //check inside a single bucket for a value
+      for (i = 0; i < storage[index]; i++) {
+      if(storage[index][i][0] === key) {
+      delete storage[index][i];
+        }
+      }
+    }
+  };
+
+  this.lookupValue = function(key) {
+   var index = hash(key, storageLimit);
+    if (storage[index] === undefined) {
+      return "Does not exist";
+    } else {
+      for (i = 0; i < storage[index].length; i++) {
+        if(storage[index][i][0] === key) {
+    return storage[index][i][1];
+        }
+      }
+    }
+  };
+
+}
+
+let system1 = new HashTable();
+
+console.log(system1.addKeyValue('customer name', 'sally black'));
+system1.addKeyValue('customer name', 'sally black')
+console.log(system1.addKeyValue('address','1234 W. 20th St.'));
+system1.addKeyValue('address','1234 W. 20th St.')
+console.log(system1.lookupValue('address'));
+console.log(system1.addKeyValue('phone number', '888-888-8890'));
+
+console.log(system1.printStorage());
+console.log(system1.lookupValue('address'));
+
+```
+
 7. Build a system that allows a store owner to track their store's inventory using a hash table for storage.
 
+using HashTable from above:
+
+```
+let inventory = new HashTable();
+
+inventory.addKeyValue('toothbush', 'oral b');
+inventory.addKeyValue('lipstick', 'loreal red')
+inventory.addKeyValue('conditioner', 'pantene')
+inventory.addKeyValue('gum', 'stride mint');
+console.log(inventory.printStorage());
+
+```
+
 8. Build a system that allows digital copies of newspapers to be entered and searched by publisher and publication date. Use hash tables to store the necessary data.
+
+using HashTable from above:
+
+```
+let newspapers = new HashTable();
+
+newspapers.addKeyValue('Billy Gates, 02/28/1993', 'The Rivere');
+newspapers.addKeyValue('Thomas Edward, 05/02/2017', 'The New York Times')
+console.log(newspapers.printStorage());
+
+```
