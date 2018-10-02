@@ -1,19 +1,18 @@
 1. What is a hash table?
 
-A type of data structure that stores each value by linking it to a key.
+A type of data structure that stores each value by linking it to a key, forming key-value pairs. Hash tables store these key-value pairs by placing them at a particular location in an array maintained internally in the hash table. Each key must be unique. A value can be retrieved by looking up its distinct key.
 
 2. What is hashing?
 
-When your data contains a variable number of consistently arranged values, each with an identifier.
-For Ex. Employee Id's that contain employee interview.
+The process of converting string keys into numerical indices. This is done by converting the key to a specific, fixed-length number (hash code). The hash code is used as a key and can figure out where to place the key-value pair in its internal array.
 
 3. How does a hash table store data?
 
-Stores key-value pairs by placing them at a particular location in an array maintained internally in the hash table.
+It first takes the key. Then it converts the key into a hash code using a hashing function. Then it Mods (hash code % # of containers) the hash code to get an array index. Finally, the table stores the value in the array index.
 
 4. How are hash tables and objects different?
 
-Hash tables store collections of similar data while objects are more intended for storing different types of data.
+Hash tables store data as key-value pairs at a particular location in an array maintained internally in the hash table while objects are standalone entities that contain properties or keys and values.
 
 5. Determine whether you would use a hash table or an object to store each of the following pieces of data:
 
@@ -111,15 +110,20 @@ let HashTable = function() {
 
 let system1 = new HashTable();
 
-console.log(system1.addKeyValue('customer name', 'sally black'));
-system1.addKeyValue('customer name', 'sally black')
-console.log(system1.addKeyValue('address','1234 W. 20th St.'));
-system1.addKeyValue('address','1234 W. 20th St.')
-console.log(system1.lookupValue('address'));
-console.log(system1.addKeyValue('phone number', '888-888-8890'));
+system1.addKeyValue('800-828-8888',        `Name: Sally Black
+ Address: 1234 W. 20th St.
+ Phone Number: 800-828-8888`)
+system1.addKeyValue('888-888-8888',`
+Name: Bob Schilling
+Address: 85 Burningham Rd.
+Phone Number: 888-888-8888`)
+
+system1.addKeyValue('245-543-8865', `Name: Kenya Gates
+Address: 123 Billionaire St.
+Phone Number: 245-543-8865`);
 
 console.log(system1.printStorage());
-console.log(system1.lookupValue('address'));
+console.log(system1.lookupValue('888-888-8888'));
 
 ```
 
@@ -130,10 +134,14 @@ using HashTable from above:
 ```
 let inventory = new HashTable();
 
-inventory.addKeyValue('toothbush', 'oral b');
-inventory.addKeyValue('lipstick', 'loreal red')
-inventory.addKeyValue('conditioner', 'pantene')
-inventory.addKeyValue('gum', 'stride mint');
+inventory.addKeyValue('electric tooth brushes', `Sonicaire(34)`);
+inventory.addKeyValue('MouthWash', `Listerine Mouthwash 32 oz.(20)`)
+inventory.addKeyValue('dental floss', `Reach Mint(120)`);
+inventory.addKeyValue('gum', `stride mint(24)`);
+inventory.addKeyValue(`Chapstick`, `Cherry Chapstick(14)`);
+inventory.addKeyValue('Vitamins', `Vitamin D(56)
+Calcium(23)
+Vitamin C(78)`);
 console.log(inventory.printStorage());
 
 ```
@@ -146,7 +154,10 @@ using HashTable from above:
 let newspapers = new HashTable();
 
 newspapers.addKeyValue('Billy Gates, 02/28/1993', 'The Rivere');
-newspapers.addKeyValue('Thomas Edward, 05/02/2017', 'The New York Times')
+newspapers.addKeyValue('Thomas Edward, 05/02/2017', 'The New York Times');
+newspapers.addKeyValue('Tasha Sasha, 02/20/2002', 'Startribune');
+newspapers.addKeyValue('Anya Davidson, 01/13/1991', 'Los Angelos Times');
+newspapers.addKeyValue('Greggory Grinkle, 03/09/1943', `Los Angelos Times`);
 console.log(newspapers.printStorage());
 
 ```
