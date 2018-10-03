@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 1. What is a hash table?
 
 A type of data structure that stores each value by linking it to a key, forming key-value pairs. Hash tables store these key-value pairs by placing them at a particular location in an array maintained internally in the hash table. Each key must be unique. A value can be retrieved by looking up its distinct key.
@@ -161,3 +162,157 @@ newspapers.addKeyValue('Greggory Grinkle, 03/09/1943', `Los Angelos Times`);
 console.log(newspapers.printStorage());
 
 ```
+=======
+1. What is a hash table?
+
+A type of data structure that stores each value by linking it to a key.
+
+2. What is hashing?
+
+When your data contains a variable number of consistently arranged values, each with an identifier.
+For Ex. Employee Id's that contain employee interview.
+
+3. How does a hash table store data?
+
+Stores key-value pairs by placing them at a particular location in an array maintained internally in the hash table.
+
+4. How are hash tables and objects different?
+
+Hash tables store collections of similar data while objects are more intended for storing different types of data.
+
+5. Determine whether you would use a hash table or an object to store each of the following pieces of data:
+
+A list of pets and their unique names.
+-hash table
+
+The name, age, and the birthday of your best friend.
+-object
+
+The name and location of every company in a given city.
+-hash table
+
+All of the books checked out from a library by a particular individual.
+-object
+
+The primary and secondary phone numbers for a contact.
+-hash table
+
+6. Build a system that allows a sales associate to enter a customer's name, address, and phone number into the system and look up customers using their phone numbers. Store this information in a hash table.
+
+```
+//Hash Tables
+
+var hash = function(str, max) {
+  var hash = 0;
+  for(var i = 0; i < str.length; i++) {
+    hash += str.charCodeAt(i)
+  }
+  console.log(hash);
+  // max represents the # of "buckets" or storage containers.
+  return hash % max;
+};
+
+let HashTable = function() {
+    let storage = [];
+    //# of buckets in the storage array
+    const storageLimit = 6;
+
+  this.printStorage = function() {
+    return storage
+  }
+
+  this.addKeyValue = function(key, value) {
+    //implement hash funtion to find an index
+    var index = hash(key, storageLimit)
+    //if there is nothing in the storage array
+    if(storage[index] === undefined || NaN) {
+      storage[index] = [[key, value]];
+    }
+    else {
+      var inserted = false;
+      for(i = 0; i < storage[index].length; i++) {
+        //if a bucket with the matching key is found, set the value at the following index to form a [key,value] pair
+        if (storage[index][i][0] === key) {
+          storage[index][i][1] = value;
+          inserted = true;
+        }
+       }
+      if (inserted === false) {
+          storage[index].push([key, value]);
+      }
+    }
+  };
+
+  this.removeValue = function(key) {
+   var index = hash(key, storageLimit);
+    if(storage[index].length === 1 && storage[index][0][0] === key) {
+      //delete operator - removes a property from an object
+      delete storage[index];
+    }
+    else {
+      //check inside a single bucket for a value
+      for (i = 0; i < storage[index]; i++) {
+      if(storage[index][i][0] === key) {
+      delete storage[index][i];
+        }
+      }
+    }
+  };
+
+  this.lookupValue = function(key) {
+   var index = hash(key, storageLimit);
+    if (storage[index] === undefined) {
+      return "Does not exist";
+    } else {
+      for (i = 0; i < storage[index].length; i++) {
+        if(storage[index][i][0] === key) {
+    return storage[index][i][1];
+        }
+      }
+    }
+  };
+
+}
+
+let system1 = new HashTable();
+
+console.log(system1.addKeyValue('customer name', 'sally black'));
+system1.addKeyValue('customer name', 'sally black')
+console.log(system1.addKeyValue('address','1234 W. 20th St.'));
+system1.addKeyValue('address','1234 W. 20th St.')
+console.log(system1.lookupValue('address'));
+console.log(system1.addKeyValue('phone number', '888-888-8890'));
+
+console.log(system1.printStorage());
+console.log(system1.lookupValue('address'));
+
+```
+
+7. Build a system that allows a store owner to track their store's inventory using a hash table for storage.
+
+using HashTable from above:
+
+```
+let inventory = new HashTable();
+
+inventory.addKeyValue('toothbush', 'oral b');
+inventory.addKeyValue('lipstick', 'loreal red')
+inventory.addKeyValue('conditioner', 'pantene')
+inventory.addKeyValue('gum', 'stride mint');
+console.log(inventory.printStorage());
+
+```
+
+8. Build a system that allows digital copies of newspapers to be entered and searched by publisher and publication date. Use hash tables to store the necessary data.
+
+using HashTable from above:
+
+```
+let newspapers = new HashTable();
+
+newspapers.addKeyValue('Billy Gates, 02/28/1993', 'The Rivere');
+newspapers.addKeyValue('Thomas Edward, 05/02/2017', 'The New York Times')
+console.log(newspapers.printStorage());
+
+```
+>>>>>>> fe652fe695f394fa3e4bbacf62b43cdc2a8f8ca2
