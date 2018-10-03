@@ -1,0 +1,45 @@
+1. Using proper pseudo-code, describe the following primitive algorithms:
+
+  1. Insert a paper filter into the filter holder compartment.
+  2. Add coffee grounds into the filter.
+  3. Pour filtered or bottled water into reservoir.
+  4. Turn on the coffee maker and let it brew.
+  5. Turn off the coffee maker.
+  6. Remove and discard the paper filter with left over coffee grounds.
+  7. Remove pot and serve the coffee.
+
+  Washing dishes;
+  1. Rinse dirty dishes under warm water to remove excess food
+  2. Open dishwasher
+  3. Pack cups, bowls, and pots on top shelf
+  4. Pack plates, utensils, knives, and pans in bottom shelf
+  5. Pour dishwashing powder into soap reservoir
+  6. Close dishwasher
+  7. Press start
+  8. Once dishwasher has finished its cycle, unload dishes.
+  9. Dry them with a towel
+  10. Pack cups, bowls, and plates into shelves
+  11. Pack pots and pans to bottom shelves
+  12. Pack utensils and knives into drawers
+  A choice of your own.
+
+  Brushing your teeth;
+  1. Wet toothbrush by running under warm water.
+  2. Hold toothbrush flat in dominant hand.
+  2. With other hand, squeeze a pea size of toothpaste onto toothbrush.
+  3. Start scrubbing teeth in a circular motion using dominant hand.
+  4. Keep scrubbing until all surfaces of all teeth have been cleaned.
+  5. Rinse mouth twice with lukewarm water.
+  6. Run toothbrush under warm water to rinse off toothpaste.
+  7. Set toothbrush to dry.
+  Making coffee;
+
+2. As with the knot algorithm, there may be more than one way to solve the problem. It is essential to try to pick the best algorithm for a situation. Name three companies who created an algorithm that made them successful, e.g., Google's search algorithm. It doesn't need to be a tech example (such as a recipe or manufacturing a product). Google's algorithm produces more relevant results than other search engines; what about each of your cases make them stand out?
+
+  1. UPS - Their telematics and algorithms saves drivers 85 million miles a year and annual savings of $2.55 billion.
+  2. Tesla - use artificial intelligence to develop self-driving cars.
+  3. Facebook - Uses the Facebook algorithm in news feeds to arrange posts according to how likely the user would be to interact with the content.
+
+3. Hypothesize about what constitutes an efficient algorithm versus an inefficient algorithm.
+
+  An efficient algorithm has a sequence of logical steps, accomplish a goal, and have a finite amount of time to complete. An inefficient algorithm has steps that are hard to follow, don't have a goal, and take an infinite time to complete.
