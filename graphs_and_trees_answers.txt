@@ -1,0 +1,123 @@
+1. What is a binary tree and what makes it unique to other trees?
+
+A binary tree is a data structure in which each node contains:
+-a left pointer
+-a right pointer
+  (the left and right pointers recursively point to child nodes on either side)
+-a data element
+
+What makes a binary tree unique is that the nodes are arranged in order from left to right. On each node, the left pointer points to smaller element or value and the right pointer points to a larger element or value.
+
+- a root pointer points to the topmost or root node.
+
+2. What is a heuristic?
+
+Guesses that a data structure makes to solve a complex problem sooner by sacrificing accuracy.
+
+3. What is another problem besides the shortest-path problem that requires the use of heuristics?
+
+Availability heuristics to make decisions. It is about what we remember quickly and what we see.
+
+4. What is the difference between a depth-first search and a breadth-first search?
+
+depth-first: searches by starting at the root and then going as far down each branch as possible before going back to the root and doing the same process again with another branch until item is found.
+
+breadth-search: search starts at the root and explore the neighbor nodes first, before moving to the next level of neighbors.
+
+5. Explain in your own words what an undirected, a-cyclic, unweighted graph is.
+
+A graph that contains pointers that connects two nodes without it having a stating or ending node. They do not contain loops and don't assign the cost of travel (travel time) between nodes.
+
+6. What kind of graph is a binary search tree?
+
+a directed, A-cyclic, unweighted graph
+
+Programming Questions
+For the following questions, describe in words how you could solve the problem and then do so. Use the depiction of the Binary Search Tree to refer to the examples.
+
+1. Given a Binary Search Tree and a value, write a function that checks to see whether the value exists within the tree.
+
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+class BinarySearchTree {
+  constructor() {
+    this.root = null;
+  }
+
+//add(data) – It inserts a new node in a tree with a value data
+// helper method which creates a new node to
+// be inserted and calls insertNode
+add(data) {
+  const node = this.root;
+  //if node = null
+  // set root node to new Node
+    if(node === null) {
+     this.root = new Node(data);
+    } else {
+      function searchTree(node) {
+        if(data < node.data) {
+          if(node.left === null) {
+            node.left = new Node(data);
+          }
+          else if (node.left !== null) {
+            return searchTree(node.left)
+          }
+        } else if (data > node.data ) {
+          if(node.right === null ) {
+            node.right = new Node(data);
+          }
+          else if(node.right !== null) {
+            return searchTree(node.right);
+          }
+        } else {
+          return null;
+        }
+       };
+      return searchTree(node);
+      }
+    }
+
+  valueExists(data) {
+    let current = this.root;
+    //recursive
+    while(current) {
+      if(data === current.data) {
+        return true;
+      }
+      else if
+       (data < current.data) {
+         current = current.left;
+        } else {
+          current = current.right;
+        }
+      }
+      return false;
+    }
+
+}
+
+var myNode = new BinarySearchTree();
+myNode.add(8);
+myNode.add(3);
+myNode.add(10);
+myNode.add(1);
+myNode.add(6);
+myNode.add(14);
+myNode.add(4);
+myNode.add(7);
+myNode.add(13);
+
+console.log(myNode.valueExists(10)); //true
+console.log(myNode.valueExists(23)); //false     
+
+Example: The value 10 exists in the tree. The value 23 does not exist in the tree.
+
+2. Given a Binary Search Tree and two nodes, n1 and n2, write a function that finds the distance between the two nodes.
+
+Example: The distance between the nodes 4 and 10 is 4. The distance between the nodes 8 and 10 is 1. The distance between the nodes 1 and 14 is 4.
