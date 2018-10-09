@@ -44,8 +44,33 @@ Fibonacci:
 
 5. Given a multi-dimensional collection (such as an array) where the number of dimensions is unknown, write a recursive algorithm to count the number of items in the entire collection.
 
-
+function arrayLength(array) {
+   let count = 0;
+   for (i = 0; i < array.length; i++) {
+     if (typeof array[i] === "object") {
+         count += arrayLength(array[i]);
+     }
+     else {
+       count++;
+     }
+   } 
+    return count;
+}
 
 6. A palindrome is a word or phrase whose spelling is the same either direction (e.g., racecar). Write a recursive algorithm to determine if a given word or phrase is a palindrome.
 
+function isPalindrome(string) {
+  if (string.length === 0) {
+    return true;
+  }
+  else if(string[0] !== string[string.length -1]) {
+    return false;
+  }
+ else {
+  return isPalindrome(string.slice(1,string.length-1));
+ }
+}
+
 7. Google Easter Egg: Google the term "recursion". Google will prompt you with "Did you mean: recursion". Explain why this behavior exhibits properties of recursion.
+
+This behavior exhibits properties of recursion because a recursive function is a function that calls itself recursively. When you type recursion, google will keep asking if you meant recursion, it keeps calling itself which is recursion.
