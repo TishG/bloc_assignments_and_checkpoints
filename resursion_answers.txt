@@ -1,0 +1,51 @@
+1. Define and compare recursion and iteration.
+
+Recursion is the technique where a procedure calls itself with parameters incrementally moving toward one of the base cases. Iteration is the technique of utilizing a loop to repeat a process. Recursive solutions tend to run slower and have more system limitations than iterative solutions. While iterative solutions can be harder to implement than recursive functions.
+
+2. Name five algorithms that are commonly implemented by recursion.
+
+  1. Binary search
+  2. Merge sort
+  3. Quick sort
+  4. Breadth First Search
+  5. Depth First Search
+
+3. When should you use recursion, and when should you avoid recursion? Give examples for each.
+
+  You should use recursion when the algorithm can be defined as a combination of sub-results starting with known cases.
+
+  For Example:
+  function factorial(number) {
+  if (number <= 0) {
+    return 1;
+  } else {
+    return number * factorial(number -1);
+  }
+}
+console.log(factorial(6));
+
+  You should avoid recursion when dealing with a collection of numbers or a large parameter because the tendency to repeat calculations can cause a performance concern.
+
+  For example: finding the maximum number of: [34, 5, 9, 45, 13, 25]. Using the recursive function would be more expensive and time consuming than using an iterative function.
+
+4. Compare the recursive and iterative solutions to the three algorithms from the checkpoint (factorial, maximum, and fibonacci). What is similar, and what is different?
+
+Factorial:
+  Similarities: Base Case, both will return error if number is less than 0. Will also return 1 if number is 0 or 1.
+  Differences: The recursive solution multiplies the number or parameter by its own function until the final result is returned while the iterative solution uses a loop and adds the result of multiplying each preceding number by 1.
+
+Maximum:
+  Similarities: Both will return number if there is only one number in the parameter and will initially set the first number to the maximum.
+  Differences: Recursive solution will return "error" if there is no number in the parameters and will first set the first number to maximum. Then it will find the max of the remaining numbers and compare that max to the initial maximum. The iterative solution will set the first number to maximum and then compare each number in the rest of the array to the initial maximum and return the largest with each iteration until the end of the array has been reached.
+
+Fibonacci:
+  Similarities: Base Case, if number = 2 or number =1, then 1 will be returned.
+  Differences: Iterative creates a current, previous, and newCurrent variable. The iterative solution uses a for loop to return the final result which is current. The Recursive solution will finitely call its own function to return two variable, one with the number -2 and one with the number -1, then it will finitely add the two variables and return final result.
+
+5. Given a multi-dimensional collection (such as an array) where the number of dimensions is unknown, write a recursive algorithm to count the number of items in the entire collection.
+
+
+
+6. A palindrome is a word or phrase whose spelling is the same either direction (e.g., racecar). Write a recursive algorithm to determine if a given word or phrase is a palindrome.
+
+7. Google Easter Egg: Google the term "recursion". Google will prompt you with "Did you mean: recursion". Explain why this behavior exhibits properties of recursion.
