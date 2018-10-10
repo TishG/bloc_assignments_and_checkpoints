@@ -1,0 +1,85 @@
+Short Answers
+
+1. What is a real-life scenario that uses linear search?
+Your brother told you that he was going to a friends house in the neighborhood and would be back in two hours. It has been 4 hours and you begin to become concerned. You know that he has a lot of friends that live in different homes throughout the neighborhood. You decide to ring everyone's doorbell to see if your brother is there, starting at the home on your left. You go from home to home until finally at the 7th home, you find him. He had just lost track of time, he said.
+
+-Each home (element) was searched until my brother (value) was found.
+
+2. What is a real-life scenario that uses binary search?
+You ask a friend to guess the number you are thinking of between 1 and 100. Their first guess is 100, I tell them that is too high. Then they guess 1, I tell them that is too low. Then they guess, 50. I inform them that is too high. They guess 20, I say too low. They guess 30, I say too high. Finally, they guess 23, which is the correct number.
+
+-As in binary search, the stack is repeatedly halved until the value is found. In this case, I was giving hints to the guesser that the number is not in a certain group when informing them that the number is too high or too low. When the guesser guessed 100 and 50, and both numbers were high, the guesser knew that the number was not between 50 and 100.
+
+3. Given the alphabetically sorted collection in this checkpoint, how many iterations would it take to find the value G using linear search?
+
+[A,B,C,D,E,F,G]
+
+
+First iteration finds A [> A...]
+Second iteration finds B [> A > B...]
+Third iteration finds C [> A > B > C...]
+Fourth iteration finds D [> A > B > C > D...]
+Fifth iteration finds E [> A > B > C > D > E..]
+Sixth iteration finds F [> A > B > C > D > E > F.]
+Seventh iteration finds G [> A > B > C > D > E > F > G]
+
+-It would take seven iterations to find the value, G.
+
+4. Given the alphabetically sorted collection in this checkpoint, how many iterations would it take to find the value G using binary search?
+
+[A,B,C,D,E,F,G]
+
+First iteration finds D
+
+[E,F,G]
+
+Second iteration finds F
+
+[G]
+
+Third iteration finds G
+
+-It would take three iterations to find the value, G.
+
+5. Given an unsorted collection of a million items, which algorithm would you choose between linear search and binary search? Explain your reasoning.
+
+If I wanted to use binary search on an unsorted collection, I would first have to sort the list and then "divide and conquer". That would take longer than just iterating through each item. In this case, I would choose linear search.
+
+6. Given a sorted collection of a million items, which algorithm would you choose between linear search and binary search? Explain your reasoning.
+
+-I would choose binary search because binary search works best on a sorted list and takes much less iterations to find an item in a large collection than linear search. The time complexity would be much lower using binary search than linear search.
+
+Programming Assignment
+
+1. You and a friend have set a wager to see who can find the word "Albatross" in the dictionary the fastest. Write a program to allow you to win the bet.
+
+function find(dictionary, word) {
+  var low = dictionary.indexOf(dictionary[0]);
+  var high = dictionary.indexOf(dictionary[dictionary.length - 1]);
+
+  while(low <= high) {
+    var mid = (low + high) / 2;
+    if(dictionary[mid] > word) {
+        high = dictionary.indexOf(mid) - 1;
+      }
+    if (dictionary[mid] < word) {
+      high = dictionary.indexOf(mid) + 1;
+    }
+        return word + ": found at index, " + dictionary.indexOf(word);
+  }
+    return `Word was not found.`;
+}
+
+2. You work at a pet store, and a child has asked you to net the only white-spotted goldfish from the fish tank. Write a program that will help you net the right fish.
+
+var fishes =
+    [
+
+  {goldfish1: "sally", hasWhiteSpots: false},
+  {goldfish2: "ben", hasWhiteSpots: false},
+  {goldfish3: "tom", hasWhiteSpots: true},       {goldfish4: "julia", hasWhiteSpots: false},
+  {goldfish5: "taylor", hasWhiteSpots: false}
+
+];
+
+fishes.filter(fish => fish.hasWhiteSpots === true);
