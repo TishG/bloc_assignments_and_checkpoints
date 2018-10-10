@@ -1,0 +1,53 @@
+1. Write pseudocode for bubble sort.
+
+Function bubbleSort(collection)
+  DO {
+    let swapped = false;
+    collection.forEach((num, i) =>
+    {
+    if(num > collection[i + 1]) {
+      let temp = num;
+      collection[i] = collection[i + 1];
+      collection[i + 1] = temp;
+      swapped = true;
+      }
+    })
+  }
+  WHILE (swapped === true)
+  Return collection
+END FUNCTION
+
+2. Write pseudocode for quicksort.
+
+FUNCTION quickSort(collection)
+
+  IF (collection.length <= 1 )
+    Return collection
+  END IF
+
+  SET pivot to collection[collection.length -1]
+  set left to []
+  set right to []
+
+  FOR (var i = 0; i < collection.length - 1; i++)
+    IF (collection[i] < pivot)
+      left.push(collection[i])
+
+    ELSE right.push(collection[i])
+  END FOR
+
+  Return [...quickSort(left), pivot, ...quickSort(right)]
+
+END FUNCTION
+
+3. We talked about time complexity in a previous checkpoint, and how to get an idea of the efficiency of an algorithm. After looking at the pseudocode for the above sorting methods, identify why merge sort and quick sort are much more efficient than the others. Walking through each algorithm with a few sample collections may help.
+
+Quick sort and Merge sort are more efficient than the other algorithms because they generally take fewer iterations to sort. instead of going one by one through each item in a collection, the collection gets divided into sub-collections and are then sorted.
+
+The time complexity for merge sort and quick sort in O(n log n) while the time complexities of insertion, bubble sort, and selection are O(n^2). O(n log n) is more efficient than O(n^2).
+
+4. All of the sorts addressed in this checkpoint are known as comparison sorts. Research bucket sort and explain how it works. What is the ideal input for bucket sort?
+
+Bucket sort sorts a collection by first placing elements into individual buckets depending on its value. It then organizes those values in those buckets before finally, placing the values back in the collection in order.
+
+Bucket sort has an average time complexity of O(n + k)
