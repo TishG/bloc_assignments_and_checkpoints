@@ -45,7 +45,7 @@ FUNCTION partition(collection, pivot, left, right)
 
   FOR(var i = left; i < right; i++)
     IF (collection[i] < pivotValue)
-      swap(arr, i, partitionIndex)
+      swap(collection, i, partitionIndex)
       partitionIndex++;
     END IF
   END FOR
@@ -55,7 +55,7 @@ FUNCTION partition(collection, pivot, left, right)
 
 END FUNCTION
 
-FUNCTION swap(collecrion, i, j)
+FUNCTION swap(collection, i, j)
 
   let temp = collection[i];
   collection[i] = collection[j];
