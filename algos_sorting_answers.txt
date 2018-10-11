@@ -19,24 +19,47 @@ END FUNCTION
 
 2. Write pseudocode for quicksort.
 
-FUNCTION quickSort(collection)
+FUNCTION quickSort(collection, left, right)
 
-  IF (collection.length <= 1 )
-    Return collection
+  var length = collection.length;
+  var pivot;
+  var partitionIndex;
+
+  IF (left < right)
+    pivot = right;
+    partitionIndex = partition(collection, pivot, left, right);
+
+    quickSort(collection, left, partitionIndex - 1);
+    quickSort(collection, partitionIndex + 1, right);
   END IF
 
-  SET pivot to collection[collection.length -1]
-  set left to []
-  set right to []
+  return collection
 
-  FOR (var i = 0; i < collection.length - 1; i++)
-    IF (collection[i] < pivot)
-      left.push(collection[i])
+END FUNCTION
 
-    ELSE right.push(collection[i])
+//partition function
+FUNCTION partition(collection, pivot, left, right)
+
+  var pivotValue = collection[pivot],
+      partitionIndex = left;
+
+  FOR(var i = left; i < right; i++)
+    IF (collection[i] < pivotValue)
+      swap(arr, i, partitionIndex)
+      partitionIndex++;
+    END IF
   END FOR
 
-  Return [...quickSort(left), pivot, ...quickSort(right)]
+  swap(collection, right, partitionIndex)
+  return partitionIndex;
+
+END FUNCTION
+
+FUNCTION swap(collecrion, i, j)
+
+  let temp = collection[i];
+  collection[i] = collection[j];
+  collection[j] = temp;
 
 END FUNCTION
 
